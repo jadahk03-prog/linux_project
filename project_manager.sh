@@ -7,7 +7,7 @@
 source features/tree_view_function.sh
 source features/git_log_analyzer_function.sh 
 source features/find_path.sh  
-source features/enccrypt.sh        
+source features/encrypt.sh        
 source features/decrypt.sh      
 
 
