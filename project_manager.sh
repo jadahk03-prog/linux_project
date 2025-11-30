@@ -6,8 +6,9 @@
 # ==============================================================================
 source features/tree_view_function.sh
 source features/git_log_analyzer_function.sh 
-source features/find_file_function.sh  # 동료 작업 (임시)
-source features/caesar_tool_function.sh  # 동료 작업 (임시)
+source features/find_path.sh  
+ssource features/encrypt.sh        
+source features/decrypt.sh      
 
 
 # ==============================================================================
@@ -17,7 +18,7 @@ function main_menu() {
     while true; do
         echo ""
         echo "=========================================================="
-        echo "         🛠️  프로젝트 관리 및 파일 작업 도구 메뉴"
+        echo "           프로젝트 관리 및 파일 작업 도구 메뉴"
         echo "=========================================================="
         echo " [1] 디렉터리 트리 구조 출력 및 목표 파일 위치 시각화"
         echo " [2] 파일명 검색 및 위치 절대 경로 출력"
@@ -31,10 +32,22 @@ function main_menu() {
         case $choice in
             # source 명령으로 로드된 함수 호출
             1) tree_view_function ;;
-            2) find_file_function ;;
-            3) caesar_tool_function ;;
+            
+            2) find_path ;;
+            
+            3)
+                echo "--- 3. 카이사르 암/복호화 기능 ---"
+                echo " a) 암호화 (Encrypt)"
+                echo " b) 복호화 (Decrypt)"
+                read -p "선택 (a/b): " sub_choice
+                case $sub_choice in
+                    a) encrypt ;;   # ✅ encrypt.sh 파일의 'encrypt' 함수 호출
+                    b) decrypt ;;   # ✅ decrypt.sh 파일의 'decrypt' 함수 호출
+                    *) echo " 잘못된 선택입니다." ;;
+                esac
+                ;;
             4) git_log_analyzer_function ;;
-            0) echo "👋 프로그램을 종료합니다."; break ;;
+            0) echo " 프로그램을 종료합니다."; break ;;
             *) echo "❌ 잘못된 메뉴 번호입니다." ;;
         esac
     done
