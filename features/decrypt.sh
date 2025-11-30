@@ -15,7 +15,7 @@ function decrypt() {
     echo "$input" > "$INPUT_PATH"
 
     # python 스크립트 실행 시 절대 경로 전달
-   python3 features/cipher.py decrypt "$INPUT_PATH" "$OUTPUT_PATH" 2>&1
+   python features/cipher.py decrypt "$INPUT_PATH" "$OUTPUT_PATH" 2>&1
 
     echo "✅ 복호화 완료! 결과는 $OUTPUT_PATH 에 저장되었습니다."
 }
